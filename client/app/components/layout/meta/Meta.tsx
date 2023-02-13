@@ -10,7 +10,7 @@ import { ISeo } from './meta.interface';
 const Meta: FC <PropsWithChildren<ISeo>> = ({
 	title,
 	description,
-	image = '/images/logo512x512.png',
+	image = '/images/logo.png',
 	children,
 	type = 'website',
 }) => {

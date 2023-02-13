@@ -14,7 +14,6 @@ const Layout: FC<PropsWithChildren<ILayout>> = ({ children, ...rest }) => {
         <div className={styles.layout}>
           <main>
             <Header />
-              <h1>Layout component</h1>
             <section className={styles.content}></section>
           </main>
         </div>
