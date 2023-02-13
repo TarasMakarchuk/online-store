@@ -2,15 +2,14 @@
 const colors = require('tailwindcss/colors');
 
 const constants = {
-    purple: '#6160DC',
-    'light-blue': '#03DAF2',
-    orange: '#FFB74A',
-    green: '#00A389',
-    black: '#22242C',
+    green: '#008D64',
+    'dark-green': '#006044',
+    'light-green': '#E6F2EF',
+    black: '#222222',
     white: '#ffffff',
-    red: '#FF4A55',
-    gray: '#8E8EA1',
-    'light-gray': '#F5F5F5',
+    'light-gray': '#E8E7E3',
+    red: '#F23C3D',
+    'beige': '#A49B8F',
 };
 
 module.exports = {
