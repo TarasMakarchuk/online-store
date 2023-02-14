@@ -7,7 +7,7 @@
       > li {
         @apply list-none;
         > a {
-          @apply tracking-widest uppercase relative text-black no-underline;
+          @apply tracking-widest uppercase relative text-black no-underline font-semibold;
 
           &::after {
             content: '';
