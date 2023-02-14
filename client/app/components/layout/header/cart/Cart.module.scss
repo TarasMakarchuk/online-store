@@ -1,0 +1,15 @@
+.cart {
+  @apply flex items-center gap-10;
+
+  .basket {
+    @apply flex items-center tracking-widest font-semibold text-xl cursor-pointer;
+    .badge {
+      @apply flex items-center w-7 h-7 m-3.5 rounded-full bg-red text-white p-2.5 pt-2 text-sm;
+    }
+  }
+
+  > div > Menu {
+    @apply w-10 h-10 bg-red;
+  }
+
+}
