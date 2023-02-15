@@ -10,9 +10,9 @@
 
 .cart {
   .item {
-    @apply mb-4 flex items-center gap-5;
+    @apply pb-6 pt-4 flex items-center gap-5 border-b border-b-['light-green'];
     .name {
-      @apply tracking-widest truncate w-36 font-semibold;
+      @apply tracking-widest truncate w-60 font-semibold;
     }
     .price {
       @apply text-sm text-beige mt-1;
@@ -26,5 +26,12 @@
   }
   > div:last-child {
     @apply text-xl font-semibold;
+  }
+}
+
+.options {
+  @apply flex items-center mt-4;
+  .delete-button {
+    @apply ml-10 text-2xl pl-2 pr-2;
   }
 }
