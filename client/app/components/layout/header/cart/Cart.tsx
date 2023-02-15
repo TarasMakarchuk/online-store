@@ -1,7 +1,6 @@
 import { FC, useRef, useState } from 'react';
 import styles from './Cart.module.scss';
 import { CartItem } from '@/layout/header/cart/cart-item/CartItem';
-import { cart } from '@/data/cart.data';
 import {
 	Drawer,
 	DrawerBody,
@@ -12,11 +11,12 @@ import {
 	DrawerOverlay
 } from '@chakra-ui/modal';
 import { Button } from '@chakra-ui/react';
+import { useSelector } from 'react-redux';
 
-//TODO add redux
 const Cart: FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const btnRef = useRef<HTMLButtonElement>(null)
+	const cart = useSelector(state => (state as any).cart.items);
 
 	const handleClick = (): void => {
 		setIsOpen(!isOpen);
@@ -46,7 +46,7 @@ const Cart: FC = () => {
 
 						<DrawerBody>
 							<div className={styles.cart}>
-								{ cart.map(item => (
+								{ cart.map((item: any) => (
 									<CartItem item={item} key={item.id} />
 								)) }
 							</div>
