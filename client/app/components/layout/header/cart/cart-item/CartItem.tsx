@@ -2,6 +2,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 import { ICartItem } from '@/types/cart-item.interface';
 import styles from './../Cart.module.scss';
+import { CartActions } from '@/layout/header/cart/cart-item/cart-actions/CartActions';
 
 export const CartItem: FC<{ item: ICartItem }> = ({ item }) => {
 	const { name, description, price, reviews, images } = item.product;
@@ -24,6 +25,7 @@ export const CartItem: FC<{ item: ICartItem }> = ({ item }) => {
 						).format(price)
 					}
 				</div>
+				<CartActions />
 			</div>
 		</div>
 	);
