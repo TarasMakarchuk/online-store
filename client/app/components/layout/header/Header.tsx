@@ -1,15 +1,15 @@
 import { FC } from 'react';
+import Cart from './cart/Cart';
 import styles from './Header.module.scss'
+import Menu from './menu/Menu';
+import Search from './search/Search';
 
 export const Header: FC = () => {
 	return (
 		<header className={styles.header}>
-			HEADER
-			<div className='flex h-screen w-full items-center justify-center'>
-				<h1 className='text-center text-7x1 font-bold text-red'>
-					Online store
-				</h1>
-			</div>
+			<Menu />
+			<Search />
+			<Cart />
 		</header>
 	);
 };

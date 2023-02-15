@@ -1,0 +1,37 @@
+.wrapper-cart {
+  @apply flex items-center gap-10;
+  .basket {
+    @apply flex items-center tracking-widest font-semibold text-xl cursor-pointer;
+    .badge {
+      @apply flex items-center w-7 h-7 m-3.5 rounded-full bg-red text-white p-2.5 pt-2 text-sm;
+    }
+  }
+}
+
+.cart {
+  .item {
+    @apply pb-6 pt-4 flex items-center gap-5 border-b border-b-['light-green'];
+    .name {
+      @apply tracking-widest truncate w-60 font-semibold;
+    }
+    .price {
+      @apply text-sm text-beige mt-1;
+    }
+  }
+}
+
+.footer {
+  > div:first-child {
+    @apply text-sm text-beige;
+  }
+  > div:last-child {
+    @apply text-xl font-semibold;
+  }
+}
+
+.options {
+  @apply flex items-center mt-4;
+  .delete-button {
+    @apply ml-10 text-2xl pl-2 pr-2;
+  }
+}
