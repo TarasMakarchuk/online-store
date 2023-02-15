@@ -1,58 +1,67 @@
-import { FC, useState } from 'react';
-import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
-import { AddIcon, EditIcon, ExternalLinkIcon, HamburgerIcon, RepeatIcon } from '@chakra-ui/icons';
-import { IconButton } from '@chakra-ui/react';
+import { FC, useRef, useState } from 'react';
 import styles from './Cart.module.scss';
-import { ModalWindow } from '@/layout/modal/ModalWindow';
+import { CartItem } from '@/layout/header/cart/cart-item/CartItem';
+import { cart } from '@/data/cart.data';
+import {
+	Drawer,
+	DrawerBody,
+	DrawerCloseButton,
+	DrawerContent,
+	DrawerFooter,
+	DrawerHeader,
+	DrawerOverlay
+} from '@chakra-ui/modal';
+import { Button } from '@chakra-ui/react';
 
+//TODO add redux
 const Cart: FC = () => {
-	const [showModal, setShowModal] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
+	const btnRef = useRef<HTMLButtonElement>(null)
 
 	const handleClick = (): void => {
-		setShowModal(!showModal);
-	};
-
-	const onSubmit = (event: any): any => {
-		event.preventDefault();
-		setShowModal(!showModal);
+		setIsOpen(!isOpen);
 	};
 
 	return (
-		<>
-			<ModalWindow isOpen={showModal} onClose={handleClick} onSubmit={onSubmit} />
-			<div className={styles.cart}>
-				<div className={styles.basket} onClick={handleClick}>
-					<div className={styles.badge}>2</div>
-					<div>
+		<div className={styles['wrapper-cart']}>
+
+			<button className={styles.basket} onClick={handleClick} ref={btnRef}>
+				<span className={styles.badge}>2</span>
+				<span>
 						MY BASKET
-					</div>
-				</div>
-				<div>
-					<Menu>
-						<MenuButton
-							as={IconButton}
-							aria-label='Options'
-							icon={<HamburgerIcon />}
-							variant='outline'
-						/>
-						<MenuList>
-							<MenuItem icon={<AddIcon />} command='⌘T'>
-								Menu 1
-							</MenuItem>
-							<MenuItem icon={<ExternalLinkIcon />} command='⌘N'>
-								Menu 1
-							</MenuItem>
-							<MenuItem icon={<RepeatIcon />} command='⌘⇧N'>
-								Menu 1
-							</MenuItem>
-							<MenuItem icon={<EditIcon />} command='⌘O'>
-								Menu 1
-							</MenuItem>
-						</MenuList>
-					</Menu>
-				</div>
-			</div>
-		</>
+				</span>
+			</button>
+
+				<Drawer
+					isOpen={isOpen}
+					placement='right'
+					onClose={() => setIsOpen(false)}
+					finalFocusRef={btnRef}
+				>
+					<DrawerOverlay />
+					<DrawerContent>
+						<DrawerCloseButton />
+						<DrawerHeader>My cart</DrawerHeader>
+
+						<DrawerBody>
+							<div className={styles.cart}>
+								{ cart.map(item => (
+									<CartItem item={item} key={item.id} />
+								)) }
+							</div>
+						</DrawerBody>
+
+						<DrawerFooter justifyContent='space-between'>
+							<div className={styles.footer}>
+								<div>Total:</div>
+								<div>$10.99</div>
+							</div>
+							<Button colorScheme='green'>Checkout</Button>
+						</DrawerFooter>
+					</DrawerContent>
+
+				</Drawer>
+		</div>
 	);
 };
 
