@@ -11,12 +11,12 @@ import {
 	DrawerOverlay
 } from '@chakra-ui/modal';
 import { Button } from '@chakra-ui/react';
-import { useSelector } from 'react-redux';
+import { useTypedSelector } from '@/hooks/useTypedSelector';
 
 const Cart: FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const btnRef = useRef<HTMLButtonElement>(null)
-	const cart = useSelector(state => (state as any).cart.items);
+	const cart = useTypedSelector(state => state.cart.items);
 
 	const handleClick = (): void => {
 		setIsOpen(!isOpen);
@@ -42,11 +42,16 @@ const Cart: FC = () => {
 					<DrawerOverlay />
 					<DrawerContent>
 						<DrawerCloseButton />
-						<DrawerHeader>My basket</DrawerHeader>
+						<DrawerHeader
+							fontSize={32}
+							textAlign='center'
+						>
+							My basket
+						</DrawerHeader>
 
 						<DrawerBody>
 							<div className={styles.cart}>
-								{ cart.map((item: any) => (
+								{ cart.map(item => (
 									<CartItem item={item} key={item.id} />
 								)) }
 							</div>
