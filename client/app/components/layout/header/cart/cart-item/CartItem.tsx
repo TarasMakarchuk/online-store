@@ -25,7 +25,7 @@ export const CartItem: FC<{ item: ICartItem }> = ({ item }) => {
 						).format(price)
 					}
 				</div>
-				<CartActions />
+				<CartActions item={item} />
 			</div>
 		</div>
 	);
