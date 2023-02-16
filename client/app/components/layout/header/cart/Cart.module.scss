@@ -12,17 +12,17 @@
   .item {
     @apply pb-6 pt-4 flex items-center gap-5 border-b border-b-['light-green'];
     .name {
-      @apply tracking-widest truncate w-60 font-semibold;
+      @apply tracking-widest truncate w-60 font-semibold text-xl;
     }
     .price {
-      @apply text-sm text-beige mt-1;
+      @apply text-sm text-beige mt-1 text-lg;
     }
   }
 }
 
 .footer {
   > div:first-child {
-    @apply text-sm text-beige;
+    @apply text-xl text-beige;
   }
   > div:last-child {
     @apply text-xl font-semibold;
