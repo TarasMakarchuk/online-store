@@ -5,6 +5,7 @@ const rootReducer = combineReducers({
 	cart: cartSlice.reducer,
 });
 
+//TODO localeStorage
 export const store = configureStore({
 	reducer: rootReducer,
 });

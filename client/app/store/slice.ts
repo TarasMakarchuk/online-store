@@ -19,6 +19,7 @@ export const cartSlice = createSlice({
 				item => item.product.id !== action.payload.id
 			);
 		},
-		//TODO change quantity
+		//TODO add method to change quantity goods in the basket
+
 	}
 });
