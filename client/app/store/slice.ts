@@ -14,12 +14,30 @@ export const cartSlice = createSlice({
 			const id = state.items.length;
 			state.items.push({ ...action.payload, id });
 		},
+
 		removeFromCart: (state, action: PayloadAction<{ id: number }> ) => {
 			state.items = state.items.filter(
 				item => item.product.id !== action.payload.id
 			);
 		},
-		//TODO add method to change quantity goods in the basket
+
+		increaseItemsInCart: (state, action: PayloadAction<{ id: number }> ) => {
+			state.items.map(item => {
+					if (item.product.id === action.payload.id && item.quantity) {
+						return item.quantity = item.quantity + 1;
+					}
+				}
+			);
+		},
+
+		decreaseItemsInCart: (state, action: PayloadAction<{ id: number }> ) => {
+			state.items.map(item => {
+					if (item.product.id === action.payload.id) {
+						return item.quantity > 1 ? item.quantity = item.quantity - 1 : 1;
+					}
+				}
+			);
+		},
 
 	}
 });
