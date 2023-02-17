@@ -6,6 +6,7 @@ import { CartActions } from '@/layout/header/cart/cart-item/cart-actions/CartAct
 
 export const CartItem: FC<{ item: ICartItem }> = ({ item }) => {
 	const { name, description, price, reviews, images } = item.product;
+
 	return (
 		<div className={styles.item}>
 			<Image

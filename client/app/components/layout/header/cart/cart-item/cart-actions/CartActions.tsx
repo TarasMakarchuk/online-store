@@ -14,7 +14,7 @@ export const CartActions: FC<{ item: ICartItem }> = ({ item }) => {
 			precision: 0
 		});
 
-	const { removeFromCart } = useActions();
+	const { removeFromCart, increaseItemsInCart, decreaseItemsInCart } = useActions();
 
 	const inc = getIncrementButtonProps();
 	const dec = getDecrementButtonProps();
@@ -23,7 +23,10 @@ export const CartActions: FC<{ item: ICartItem }> = ({ item }) => {
 	return (
 		<div className={styles.options}>
 			<HStack>
-				<Button {...dec}>
+				<Button
+					{...dec}
+					onClick={ () => decreaseItemsInCart({ id: item.id }) }
+				>
 					<MinusIcon boxSize={4} />
 				</Button>
 
@@ -33,9 +36,13 @@ export const CartActions: FC<{ item: ICartItem }> = ({ item }) => {
 					focusBorderColor='green.400'
 					readOnly
 					_hover={{ cursor: 'default' }}
+					value={item.quantity}
 				/>
 
-				<Button {...inc}>
+				<Button
+					{...inc}
+					onClick={ () => increaseItemsInCart({ id: item.id }) }
+				>
 					<AddIcon boxSize={4} />
 				</Button>
 			</HStack>
