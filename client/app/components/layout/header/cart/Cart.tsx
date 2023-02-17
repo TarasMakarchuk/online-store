@@ -22,11 +22,19 @@ const Cart: FC = () => {
 		setIsOpen(!isOpen);
 	};
 
+	const countTotalPrice = (): number => {
+		let total: number = 0;
+		cart.forEach(item => {
+			total += item.product.price * item.quantity;
+		});
+		return Number((total * 100 / 100).toFixed(2));
+	};
+
 	return (
 		<div className={styles['wrapper-cart']}>
 
 			<button className={styles.basket} onClick={handleClick} ref={btnRef}>
-				<span className={styles.badge}>2</span>
+				<span className={styles.badge}>{cart.length}</span>
 				<span>
 						MY BASKET
 				</span>
@@ -64,7 +72,7 @@ const Cart: FC = () => {
 						>
 							<div className={styles.footer}>
 								<div>Total:</div>
-								<div>$10.99</div>
+								<div>${countTotalPrice()}</div>
 							</div>
 							<Button colorScheme='green'>Checkout</Button>
 						</DrawerFooter>
