@@ -11,23 +11,17 @@ import {
 	DrawerOverlay
 } from '@chakra-ui/modal';
 import { Button } from '@chakra-ui/react';
-import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { formatToCurrency } from '@/utils/format-to-currency';
+import { useCart } from '@/hooks/useCart';
 
 const Cart: FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const btnRef = useRef<HTMLButtonElement>(null)
-	const cart = useTypedSelector(state => state.cart.items);
+
+	const { cart, total } = useCart();
 
 	const handleClick = (): void => {
 		setIsOpen(!isOpen);
-	};
-
-	const countTotalPrice = (): number => {
-		let total: number = 0;
-		cart.forEach(item => {
-			total += item.product.price * item.quantity;
-		});
-		return Number((total * 100 / 100).toFixed(2));
 	};
 
 	return (
@@ -59,9 +53,13 @@ const Cart: FC = () => {
 
 						<DrawerBody>
 							<div className={styles.cart}>
-								{ cart.map(item => (
-									<CartItem item={item} key={item.id} />
-								)) }
+								{
+									cart.length ?
+										cart.map(item => (
+											<CartItem item={item} key={item.id} />
+										)) :
+										<div>Basket is empty!</div>
+								}
 							</div>
 						</DrawerBody>
 
@@ -72,7 +70,7 @@ const Cart: FC = () => {
 						>
 							<div className={styles.footer}>
 								<div>Total:</div>
-								<div>${countTotalPrice()}</div>
+								<div>{ formatToCurrency(total) }</div>
 							</div>
 							<Button colorScheme='green'>Checkout</Button>
 						</DrawerFooter>

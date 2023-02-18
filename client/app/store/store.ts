@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import {
 	persistReducer,
+	persistStore,
 	FLUSH,
 	REHYDRATE,
 	PAUSE,
@@ -17,8 +18,9 @@ const rootReducer = combineReducers({
 });
 
 const persistConfig = {
-	key: 'cart',
+	key: 'online-shop',
 	storage,
+	whitelist: ['cart']
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -32,5 +34,7 @@ export const store = configureStore({
 			},
 		}),
 });
+
+export const persistor = persistStore(store);
 
 export type TypeRootState = ReturnType<typeof rootReducer>;
