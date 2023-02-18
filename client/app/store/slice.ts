@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IAddCartPayload, IInitialState } from '@/store/types';
+import { IAddCartPayload, IChangeQuantityCardPayload, IInitialState } from '@/store/types';
 import { cart } from '@/data/cart.data';
 
 const initialState: IInitialState = {
@@ -21,23 +21,16 @@ export const cartSlice = createSlice({
 			);
 		},
 
-		increaseItemsInCart: (state, action: PayloadAction<{ id: number }> ) => {
-			state.items.map(item => {
-					if (item.product.id === action.payload.id && item.quantity) {
-						return item.quantity = item.quantity + 1;
-					}
+		changeQuantity: (state, action: PayloadAction<IChangeQuantityCardPayload>) => {
+			const { id, type } = action.payload;
+			const item = state.items.find(item => item.id === id);
+			if (item) {
+				if (type === 'increase') item.quantity++;
+				if (type === 'decrease') {
+					item.quantity > 1 ? item.quantity-- : 1;
 				}
-			);
-		},
-
-		decreaseItemsInCart: (state, action: PayloadAction<{ id: number }> ) => {
-			state.items.map(item => {
-					if (item.product.id === action.payload.id) {
-						return item.quantity > 1 ? item.quantity = item.quantity - 1 : 1;
-					}
-				}
-			);
-		},
+			}
+		}
 
 	}
 });

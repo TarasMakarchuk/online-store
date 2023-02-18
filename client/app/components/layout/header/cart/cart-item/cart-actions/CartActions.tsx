@@ -14,7 +14,7 @@ export const CartActions: FC<{ item: ICartItem }> = ({ item }) => {
 			precision: 0
 		});
 
-	const { removeFromCart, increaseItemsInCart, decreaseItemsInCart } = useActions();
+	const { removeFromCart, changeQuantity } = useActions();
 
 	const inc = getIncrementButtonProps();
 	const dec = getDecrementButtonProps();
@@ -25,7 +25,7 @@ export const CartActions: FC<{ item: ICartItem }> = ({ item }) => {
 			<HStack>
 				<Button
 					{...dec}
-					onClick={ () => decreaseItemsInCart({ id: item.id }) }
+					onClick={ () => changeQuantity({ id: item.id, type: 'decrease' }) }
 				>
 					<MinusIcon boxSize={4} />
 				</Button>
@@ -41,7 +41,7 @@ export const CartActions: FC<{ item: ICartItem }> = ({ item }) => {
 
 				<Button
 					{...inc}
-					onClick={ () => increaseItemsInCart({ id: item.id }) }
+					onClick={ () => changeQuantity({ id: item.id, type: 'increase' }) }
 				>
 					<AddIcon boxSize={4} />
 				</Button>
