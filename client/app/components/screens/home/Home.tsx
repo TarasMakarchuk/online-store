@@ -1,16 +1,19 @@
 import { FC } from 'react';
 import Layout from '@/layout/Layout';
+import { Catalog } from '@/ui/catalog/Catalog';
 
 const Home: FC = () => {
-    return (
-        <Layout title="Home" description={''} type={''} image={''}>
-            <div className='flex h-screen w-full items-center justify-center'>
-                <h1 className='text-center text-7x1 font-bold text-red'>
-                    Online store
-                </h1>
-            </div>
-        </Layout>
-    );
+	return (
+		<>
+			<Layout
+				title='Home'
+				description='More than just great coffee. Explore the menu, sign up for Starbucks®
+				Rewards, manage your gift card and more.'
+			>
+				<Catalog />
+			</Layout>
+		</>
+	);
 };
 
 export default Home;
