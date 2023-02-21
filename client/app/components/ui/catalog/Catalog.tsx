@@ -1,10 +1,11 @@
 import { FC } from 'react';
 import { Carousel } from '@/ui/catalog/carousel/Carousel';
+import { IProduct } from '@/types/product.interface';
 
-export const Catalog: FC = () => {
+export const Catalog: FC<{ products: IProduct[] }> = ({ products }) => {
 	return (
 		<div>
-			<Carousel />
+			<Carousel products={ products } />
 		</div>
 	);
 };
