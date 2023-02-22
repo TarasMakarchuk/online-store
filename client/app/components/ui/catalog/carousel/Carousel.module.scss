@@ -10,7 +10,7 @@
   }
 
   .heading {
-    @apply text-xl text-beige mt-3 leading-7 font-bold;
+    @apply text-xl text-beige leading-7 font-bold;
 
     > div {
       display: -webkit-box;
@@ -26,6 +26,19 @@
 
   > div {
     @apply relative;
+  }
+
+  .variations {
+    @apply grid grid-cols-4 gap-2.5 mt-6;
+
+    > button {
+      @apply border border-solid border-white transition-colors text-[0.6rem] font-semibold uppercase py-0.5
+      px-0.5 text-center bg-transparent text-white rounded;
+
+      &.active {
+        @apply text-dark-green bg-white
+      }
+    }
   }
 
   &.active {

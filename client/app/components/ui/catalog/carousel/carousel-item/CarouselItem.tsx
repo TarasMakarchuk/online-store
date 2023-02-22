@@ -1,13 +1,14 @@
 import { IProduct } from '@/types/product.interface';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Image from 'next/image';
 import styles from '../Carousel.module.scss';
 import cn from 'clsx';
 import { CarouselBtn } from '@/ui/catalog/carousel/carousel-item/CarouselBtn';
-import { background } from '@chakra-ui/react';
-import { auto } from '@popperjs/core';
+import { CarouselVariations } from '@/ui/catalog/carousel/carousel-item/CarouselVariations';
+import { TypeSize } from '@/store/types';
 
 export const CarouselItem: FC<{ product: IProduct }> = ({ product }) => {
+	const [selectedSize, setSelectedSize] = useState<TypeSize>('SHORT');
 	const isActive = product.id === 2;
 
 	return (
@@ -31,8 +32,14 @@ export const CarouselItem: FC<{ product: IProduct }> = ({ product }) => {
 
 				{isActive ?
 					<>
-						{/* Variations */}
-						<CarouselBtn product={product}/>
+						<CarouselVariations
+							selectedSize={selectedSize}
+							setSelectedSize={setSelectedSize}
+						/>
+						<CarouselBtn
+							product={product}
+							selectedSize={selectedSize}
+						/>
 					</> :
 					<div className={styles.description}>
 						{product.description}
