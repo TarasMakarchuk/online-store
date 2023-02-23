@@ -41,6 +41,14 @@
     }
   }
 
+  .previous-button {
+    @apply absolute mt-8;
+  }
+
+  .next-button {
+    @apply absolute mt-8 ml-[210px] ;
+  }
+
   &.active {
     @apply bg-green shadow-2xl shadow-green bg-contain bg-no-repeat;
     transform: scale(1.15);
