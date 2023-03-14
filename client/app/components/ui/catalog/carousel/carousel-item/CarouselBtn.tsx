@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { COLORS } from '@/config/color.config';
 import { useActions } from '@/hooks/useActions';
 import { IProduct } from '@/types/product.interface';
-import { TypeSize } from '@/store/types';
+import { TypeSize } from '@/store/cart/cart.types';
 
 interface ICarouselButton {
 	product: IProduct;

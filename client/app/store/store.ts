@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { cartSlice } from '@/store/slice';
+import { cartSlice } from '@/store/cart/cart.slice';
 import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import {
@@ -12,9 +12,11 @@ import {
 	PURGE,
 	REGISTER,
 } from 'redux-persist';
+import { carouselSlice } from '@/store/carousel/carousel.slice';
 
 const rootReducer = combineReducers({
 	cart: cartSlice.reducer,
+	carousel: carouselSlice.reducer,
 });
 
 const persistConfig = {
