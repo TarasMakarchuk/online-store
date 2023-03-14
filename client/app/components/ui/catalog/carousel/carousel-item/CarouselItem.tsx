@@ -1,29 +1,25 @@
-import { IProduct } from '@/types/product.interface';
 import { FC, useState } from 'react';
-import Image from 'next/image';
 import styles from '../Carousel.module.scss';
 import cn from 'clsx';
 import { CarouselBtn } from '@/ui/catalog/carousel/carousel-item/CarouselBtn';
 import { CarouselVariations } from '@/ui/catalog/carousel/carousel-item/CarouselVariations';
 import { TypeSize } from '@/store/types';
+import { ICarouselItem } from '@/ui/catalog/carousel/carousel-item/carousel.interface';
+import { CarouselNavigation } from '@/ui/catalog/carousel/carousel-item/CarouselNavigation';
 
-export const CarouselItem: FC<{ product: IProduct }> = ({ product }) => {
+
+export const CarouselItem: FC<ICarouselItem> = ({ product, isActive, selectItem, nextHandler, previousHandler }) => {
 	const [selectedSize, setSelectedSize] = useState<TypeSize>('SHORT');
-	const isActive = product.id === 2;
 
 	return (
-		<div className={cn(styles.item, {
+		<button className={cn(styles.item, {
 			[styles.active]: isActive
-		})}>
+		})}
+		onClick={selectItem}
+		>
 
 			<div>
-				<Image
-					className={styles.image}
-					alt={product.name}
-					src={product.images[0]} width={315}
-					height={315}
-				/>
-
+				<CarouselNavigation product={product} isActive={isActive} nextHandler={nextHandler} previousHandler={previousHandler}/>
 				<div className={styles.heading}>
 					<div>
 						{product.name}
@@ -47,6 +43,6 @@ export const CarouselItem: FC<{ product: IProduct }> = ({ product }) => {
 				}
 			</div>
 
-		</div>
+		</button>
 	);
 };
