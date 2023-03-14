@@ -1,0 +1,16 @@
+.navigation {
+	@apply relative;
+
+	.image {
+		@apply -mt-[4.5rem];
+	}
+
+	.arrows {
+		@apply flex items-center absolute w-full justify-between;
+		top: 15%;
+
+		.arrow {
+			@apply text-white;
+		}
+	}
+}
