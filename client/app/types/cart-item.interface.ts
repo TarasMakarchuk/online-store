@@ -1,4 +1,4 @@
-import { TypeSize } from "@/store/types";
+import { TypeSize } from "@/store/cart/cart.types";
 import { IProduct } from "@/types/product.interface";
 
 export interface ICartItem {

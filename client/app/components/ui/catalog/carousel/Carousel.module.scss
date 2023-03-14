@@ -1,14 +1,14 @@
 .carousel {
-  @apply grid grid-cols-4 gap-8 mt-32;
+  @apply grid grid-cols-4 gap-12 mt-32;
 }
 
 .item {
   @apply rounded-3xl bg-light-gray p-5 pt-0 mb-8 relative cursor-pointer;
 
   .heading {
-    @apply text-xl text-beige leading-7 font-bold;
+    @apply text-xl text-beige leading-7 font-bold block text-left;
 
-    > div {
+    > span {
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -50,7 +50,7 @@
     }
 
     .heading {
-      @apply text-white text-3xl;
+      @apply text-white text-3xl ;
     }
   }
 }
