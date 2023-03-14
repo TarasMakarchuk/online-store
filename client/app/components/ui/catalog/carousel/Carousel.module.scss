@@ -1,13 +1,9 @@
-
 .carousel {
   @apply grid grid-cols-4 gap-8 mt-32;
 }
 
 .item {
-  @apply rounded-3xl bg-light-gray p-5 pt-0 mb-8 relative;
-  .image {
-    @apply -mt-[4.5rem];
-  }
+  @apply rounded-3xl bg-light-gray p-5 pt-0 mb-8 relative cursor-pointer;
 
   .heading {
     @apply text-xl text-beige leading-7 font-bold;
@@ -39,14 +35,6 @@
         @apply text-dark-green bg-white
       }
     }
-  }
-
-  .previous-button {
-    @apply absolute mt-8;
-  }
-
-  .next-button {
-    @apply absolute mt-8 ml-[210px] ;
   }
 
   &.active {

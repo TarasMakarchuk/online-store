@@ -1,12 +1,11 @@
 import { FC, useState } from 'react';
-import styles from '../Carousel.module.scss';
-import cn from 'clsx';
 import { CarouselBtn } from '@/ui/catalog/carousel/carousel-item/CarouselBtn';
 import { CarouselVariations } from '@/ui/catalog/carousel/carousel-item/CarouselVariations';
 import { TypeSize } from '@/store/types';
 import { ICarouselItem } from '@/ui/catalog/carousel/carousel-item/carousel.interface';
-import { CarouselNavigation } from '@/ui/catalog/carousel/carousel-item/CarouselNavigation';
-
+import { CarouselNavigation } from '@/ui/catalog/carousel/carousel-item/carousel-navigation/CarouselNavigation';
+import cn from 'clsx';
+import styles from '../Carousel.module.scss';
 
 export const CarouselItem: FC<ICarouselItem> = ({ product, isActive, selectItem, nextHandler, previousHandler }) => {
 	const [selectedSize, setSelectedSize] = useState<TypeSize>('SHORT');
@@ -16,6 +15,8 @@ export const CarouselItem: FC<ICarouselItem> = ({ product, isActive, selectItem,
 			[styles.active]: isActive
 		})}
 		onClick={selectItem}
+		aria-label='Select-item'
+		role='button'
 		>
 
 			<div>
