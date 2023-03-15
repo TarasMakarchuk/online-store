@@ -36,7 +36,6 @@ export const CarouselNavigation: FC<ICarouselNavigation> = ({ product, isActive,
 					onClick={() => onSelectedSlide()}
 				>
 					<Image
-
 						alt={product.name}
 						src={product.images[0]} width={315}
 						height={315}
