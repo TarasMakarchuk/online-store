@@ -6,7 +6,7 @@ import { CartActions } from '@/layout/header/cart/cart-item/cart-actions/CartAct
 import { formatToCurrency } from '@/utils/format-to-currency';
 
 export const CartItem: FC<{ item: ICartItem }> = ({ item }) => {
-	const { name, description, price, reviews, images } = item.product;
+	const { name, price, images } = item.product;
 
 	return (
 		<div className={styles.item}>

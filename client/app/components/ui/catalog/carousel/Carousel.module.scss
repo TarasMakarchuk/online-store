@@ -39,18 +39,17 @@
 
   &.active {
     @apply bg-green shadow-2xl shadow-green bg-contain bg-no-repeat;
-    transform: scale(1.15);
     background-image: url("/images/bg-pattern.jpg");
     background-position: center -5px;
 
     &::before {
       @apply w-full h-full absolute top-0 left-0 rounded-3xl;
       content: '';
-      background-image: linear-gradient(180deg, rgba(108, 148, 107, 0.5) 29%, rgb(70, 152, 61) 40%);
+      background-image: linear-gradient(180deg, rgba(108, 148, 107, 0.5) 29%, rgba(70, 152, 61) 40%);
     }
 
     .heading {
-      @apply text-white text-3xl ;
+      @apply text-white text-3xl;
     }
   }
 }
