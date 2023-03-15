@@ -5,9 +5,9 @@ import { TypeSize } from '@/store/cart/cart.types';
 import { ICarouselItem } from '@/ui/catalog/carousel/carousel-item/carousel.interface';
 import { CarouselNavigation } from '@/ui/catalog/carousel/carousel-item/carousel-navigation/CarouselNavigation';
 import cn from 'clsx';
-import styles from '../Carousel.module.scss';
 import { useCarousel } from '@/ui/catalog/carousel/carousel-item/useCarouse';
 import { useActions } from '@/hooks/useActions';
+import styles from '../Carousel.module.scss';
 
 export const CarouselItem: FC<ICarouselItem> = ({ product, index }) => {
 	const [selectedSize, setSelectedSize] = useState<TypeSize>('SHORT');
@@ -17,16 +17,16 @@ export const CarouselItem: FC<ICarouselItem> = ({ product, index }) => {
 	const isActive: boolean = index === selectedItemIndex;
 
 	return (
-		<button className={cn(styles.item, {
-			[styles.active]: isActive,
+		<div className={cn(styles.item, {
+			[styles.active]: isActive
 		})}
-		aria-label='Select-item'
-		role='button'
+			aria-label='Select-item'
+			role='button'
 		>
 
 			<div>
-				<CarouselNavigation onSelectedSlide={() => selectSlide(index)} product={product} isActive={isActive}/>
-				<button
+				<CarouselNavigation onSelectedSlide={() => selectSlide(index)} product={product} isActive={isActive} />
+				<div
 					className={styles.heading}
 					onClick={() => selectSlide(index)}
 				>
@@ -34,7 +34,7 @@ export const CarouselItem: FC<ICarouselItem> = ({ product, index }) => {
 					<span>
 						{product.name}
 					</span>
-				</button>
+				</div>
 
 				{isActive ?
 					<>
@@ -53,6 +53,6 @@ export const CarouselItem: FC<ICarouselItem> = ({ product, index }) => {
 				}
 			</div>
 
-		</button>
+		</div>
 	);
 };

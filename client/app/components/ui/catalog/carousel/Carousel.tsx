@@ -11,6 +11,7 @@ export const Carousel: FC<{ products: IProduct[] }> = ({ products }) => {
 				<CarouselItem
 					product={product}
 					index={index}
+					key={index}
 				/>)
 			}
 		</section>
