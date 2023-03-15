@@ -7,6 +7,7 @@ import { CarouselNavigation } from '@/ui/catalog/carousel/carousel-item/carousel
 import cn from 'clsx';
 import { useCarousel } from '@/ui/catalog/carousel/carousel-item/useCarouse';
 import { useActions } from '@/hooks/useActions';
+import { motion } from 'framer-motion';
 import styles from '../Carousel.module.scss';
 
 export const CarouselItem: FC<ICarouselItem> = ({ product, index }) => {
@@ -17,9 +18,12 @@ export const CarouselItem: FC<ICarouselItem> = ({ product, index }) => {
 	const isActive: boolean = index === selectedItemIndex;
 
 	return (
-		<div className={cn(styles.item, {
+		<motion.div className={cn(styles.item, {
 			[styles.active]: isActive
 		})}
+	    initial={{ scale: 1 }}
+			animate={isActive ? { scale: 1.15 } : {}}
+			transition={{ duration: 0.5, type: 'tween' }}
 			aria-label='Select-item'
 			role='button'
 		>
@@ -53,6 +57,6 @@ export const CarouselItem: FC<ICarouselItem> = ({ product, index }) => {
 				}
 			</div>
 
-		</div>
+		</motion.div>
 	);
 };
