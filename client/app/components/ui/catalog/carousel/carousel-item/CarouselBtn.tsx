@@ -35,7 +35,7 @@ export const CarouselBtn: FC<ICarouselButton> = ({ product, selectedSize }) => {
 							textTransform='uppercase'
 							fontSize={12}
 			>
-				{ currentElement ? 'Remove from basket' : 'Add to basket' }
+				{ currentElement ? '🧺 Remove from basket' : 'Add to basket' }
 			</Button>
 		</div>
 	);
