@@ -28,7 +28,7 @@ const Cart: FC = () => {
 		<div className={styles['wrapper-cart']}>
 
 			<button className={styles.basket} onClick={handleClick} ref={btnRef}>
-				<span className={styles.badge}>{cart.length}</span>
+				<span className={cart.length >= 10 ? styles.badgeMoreTen : styles.badge}>{cart.length}</span>
 				<span>
 						MY BASKET
 				</span>
