@@ -36,7 +36,7 @@ export const CartActions: FC<{ item: ICartItem }> = ({ item }) => {
 					focusBorderColor='green.400'
 					readOnly
 					_hover={{ cursor: 'default' }}
-					value={item.quantity}
+					value={ item.quantity }
 				/>
 
 				<Button

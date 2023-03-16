@@ -4,6 +4,7 @@ import { COLORS } from '@/config/color.config';
 import { useActions } from '@/hooks/useActions';
 import { IProduct } from '@/types/product.interface';
 import { TypeSize } from '@/store/cart/cart.types';
+import { useCart } from '@/hooks/useCart';
 
 interface ICarouselButton {
 	product: IProduct;
@@ -11,12 +12,17 @@ interface ICarouselButton {
 }
 
 export const CarouselBtn: FC<ICarouselButton> = ({ product, selectedSize }) => {
-	const { addToCart } = useActions();
-//TODO Change button to remove from cart
+	const { addToCart, removeFromCart } = useActions();
+	const { cart } = useCart();
+
+	const currentElement = cart.find(
+		cartItem => cartItem.product.id === product.id && cartItem.size === selectedSize
+	);
 
 	return (
 		<div style={{ textAlign: 'center'}}>
-			<Button onClick={() => addToCart({
+			<Button onClick={() =>
+				currentElement? removeFromCart({ id: currentElement.id }) : addToCart({
 				product,
 				quantity: 1,
 				size: selectedSize,
@@ -29,7 +35,7 @@ export const CarouselBtn: FC<ICarouselButton> = ({ product, selectedSize }) => {
 							textTransform='uppercase'
 							fontSize={12}
 			>
-				Add to basket
+				{ currentElement ? 'Remove from basket' : 'Add to basket' }
 			</Button>
 		</div>
 	);
