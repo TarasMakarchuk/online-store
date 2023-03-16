@@ -11,12 +11,14 @@ import {
 	DrawerOverlay
 } from '@chakra-ui/modal';
 import { Button } from '@chakra-ui/react';
-import { useSelector } from 'react-redux';
+import { formatToCurrency } from '@/utils/format-to-currency';
+import { useCart } from '@/hooks/useCart';
 
 const Cart: FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const btnRef = useRef<HTMLButtonElement>(null)
-	const cart = useSelector(state => (state as any).cart.items);
+
+	const { cart, total } = useCart();
 
 	const handleClick = (): void => {
 		setIsOpen(!isOpen);
@@ -26,7 +28,7 @@ const Cart: FC = () => {
 		<div className={styles['wrapper-cart']}>
 
 			<button className={styles.basket} onClick={handleClick} ref={btnRef}>
-				<span className={styles.badge}>2</span>
+				<span className={cart.length >= 10 ? styles.badgeMoreTen : styles.badge}>{cart.length}</span>
 				<span>
 						MY BASKET
 				</span>
@@ -42,13 +44,22 @@ const Cart: FC = () => {
 					<DrawerOverlay />
 					<DrawerContent>
 						<DrawerCloseButton />
-						<DrawerHeader>My basket</DrawerHeader>
+						<DrawerHeader
+							fontSize={32}
+							textAlign='center'
+						>
+							My basket
+						</DrawerHeader>
 
 						<DrawerBody>
 							<div className={styles.cart}>
-								{ cart.map((item: any) => (
-									<CartItem item={item} key={item.id} />
-								)) }
+								{
+									cart.length ?
+										cart.map(item => (
+											<CartItem item={item} key={item.id} />
+										)) :
+										<div>Basket is empty!</div>
+								}
 							</div>
 						</DrawerBody>
 
@@ -59,9 +70,9 @@ const Cart: FC = () => {
 						>
 							<div className={styles.footer}>
 								<div>Total:</div>
-								<div>$10.99</div>
+								<div>{ formatToCurrency(total) }</div>
 							</div>
-							<Button colorScheme='green'>Checkout</Button>
+							<Button colorScheme='whatsapp'>Checkout</Button>
 						</DrawerFooter>
 					</DrawerContent>
 

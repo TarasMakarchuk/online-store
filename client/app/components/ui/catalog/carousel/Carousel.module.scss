@@ -1,0 +1,55 @@
+.carousel {
+  @apply grid grid-cols-4 gap-12 mt-32;
+}
+
+.item {
+  @apply rounded-3xl bg-light-gray p-5 pt-0 mb-8 relative cursor-pointer;
+
+  .heading {
+    @apply text-xl text-beige leading-7 font-bold block text-left;
+
+    > span {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+
+  .description {
+    @apply text-sm mt-5 text-beige opacity-90 leading-9;
+  }
+
+  > div {
+    @apply relative;
+  }
+
+  .variations {
+    @apply grid grid-cols-4 gap-2.5 mt-6;
+
+    > button {
+      @apply border border-solid border-white transition-colors text-[0.6rem] font-semibold uppercase py-0.5
+      px-0.5 text-center bg-transparent text-white rounded;
+
+      &.active {
+        @apply text-dark-green bg-white
+      }
+    }
+  }
+
+  &.active {
+    @apply bg-green shadow-2xl shadow-green bg-contain bg-no-repeat;
+    background-image: url("/images/bg-pattern.jpg");
+    background-position: center -5px;
+
+    &::before {
+      @apply w-full h-full absolute top-0 left-0 rounded-3xl;
+      content: '';
+      background-image: linear-gradient(180deg, rgba(108, 148, 107, 0.5) 29%, rgba(70, 152, 61) 40%);
+    }
+
+    .heading {
+      @apply text-white text-3xl;
+    }
+  }
+}
