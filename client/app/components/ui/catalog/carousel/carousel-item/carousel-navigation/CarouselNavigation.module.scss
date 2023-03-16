@@ -6,7 +6,7 @@
 	}
 
 	.arrows {
-		@apply flex items-center absolute w-full justify-between;
+		@apply flex items-center absolute w-full justify-between animate-scaleIn;
 		top: 15%;
 
 		.arrow {
