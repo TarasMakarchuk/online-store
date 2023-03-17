@@ -9,7 +9,6 @@
 ![](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
 ![](https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white)
 
-
 This is an Online Shop [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ___
