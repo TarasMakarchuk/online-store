@@ -10,7 +10,6 @@
 ![](https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white)
 
 This is an Online Shop [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ___
 
 ## Installation on the Client and the Server`☕`
