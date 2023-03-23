@@ -5,6 +5,7 @@ export const products: IProduct[] = [
 		id: 1,
 		description: 'Calories total Fat 19g milk 6%',
 		name: 'Set 2 Berry morse & Capuccino - Midnight Mint',
+		slug: 'berry-morse-&-capuccino-midnight-mint',
 		images: [
 			'/images/products/berry-morse.png',
 			'/images/products/capuccino.png',
@@ -16,6 +17,7 @@ export const products: IProduct[] = [
 		id: 2,
 		description: 'Calories total Fat 29g milk 5%',
 		name: 'Green tea ',
+		slug: 'green-tea',
 		images: [
 			'/images/products/green-tea.png',
 		],
@@ -26,6 +28,7 @@ export const products: IProduct[] = [
 		id: 3,
 		description: 'Calories total Fat 10g milk 0%',
 		name: 'Lemonade',
+		slug: 'lemonade',
 		images: [
 			'/images/products/lemonade.png',
 		],
@@ -36,6 +39,7 @@ export const products: IProduct[] = [
 		id: 4,
 		description: 'Calories total Fat 14g milk 0%',
 		name: 'Mochito',
+		slug: 'mochito',
 		images: [
 			'/images/products/mochito.png',
 		],
@@ -46,6 +50,7 @@ export const products: IProduct[] = [
 		id: 5,
 		description: 'Calories total Fat 14g milk 0%',
 		name: 'Mokachino',
+		slug: 'mokachino',
 		images: [
 			'/images/products/mokachino.png',
 		],
@@ -56,6 +61,7 @@ export const products: IProduct[] = [
 		id: 6,
 		description: 'Calories total Fat 14g milk 0%',
 		name: 'Caramelle',
+		slug: 'caramelle',
 		images: [
 			'/images/products/caramelle.png',
 		],

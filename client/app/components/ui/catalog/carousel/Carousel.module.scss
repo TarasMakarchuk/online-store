@@ -37,6 +37,14 @@
     }
   }
 
+  .link {
+    @apply text-sm text-center block mt-3 text-white;
+
+    &:hover {
+      color: lightgrey;
+    }
+  }
+
   &.active {
     @apply bg-green shadow-2xl shadow-green bg-contain bg-no-repeat;
     background-image: url("/images/bg-pattern.jpg");

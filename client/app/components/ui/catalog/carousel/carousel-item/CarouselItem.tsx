@@ -9,6 +9,7 @@ import { useCarousel } from '@/ui/catalog/carousel/carousel-item/useCarouse';
 import { useActions } from '@/hooks/useActions';
 import { motion } from 'framer-motion';
 import styles from '../Carousel.module.scss';
+import Link from 'next/link';
 
 export const CarouselItem: FC<ICarouselItem> = ({ product, index }) => {
 	const [selectedSize, setSelectedSize] = useState<TypeSize>('SHORT');
@@ -50,6 +51,7 @@ export const CarouselItem: FC<ICarouselItem> = ({ product, index }) => {
 							product={product}
 							selectedSize={selectedSize}
 						/>
+						<Link href={`/product/${product.slug}`} className={styles.link}>More information</Link>
 					</> :
 					<div className={styles.description}>
 						{product.description}

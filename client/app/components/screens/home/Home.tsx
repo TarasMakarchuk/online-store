@@ -5,6 +5,7 @@ import { products } from '@/data/product.data';
 import { Heading } from '@/ui/hading/Heading';
 
 const Home: FC = () => {
+	//TODO SSR need
 	return (
 		<>
 			<Layout
