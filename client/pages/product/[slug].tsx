@@ -1,11 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import ProductDetails from '@/screens/product-details/ProductDetails';
-import { IProduct } from '@/types/product.interface';
+import { IProduct, IProductDetails } from '@/types/product.interface';
 import { products } from '@/data/product.data';
-
-export interface IProductDetails {
-	product: IProduct;
-}
 
 const ProductDetailsPage: NextPage<IProductDetails> = ({ product }) => {
 	return <ProductDetails product={product} />
