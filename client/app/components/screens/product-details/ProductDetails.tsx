@@ -3,6 +3,7 @@ import Layout from '@/layout/Layout';
 import { Heading } from '@/ui/hading/Heading';
 import { IProductDetails } from '../../../../pages/product/[slug]';
 import Breadcrumbs from '@/screens/product-details/product-breadcrumbs/Breadcrumbs';
+import ProductNavigation from '@/screens/product-details/product-navigation/ProductNavigation';
 
 const ProductDetails: FC<IProductDetails> = ({ product }) => {
 
@@ -17,6 +18,7 @@ const ProductDetails: FC<IProductDetails> = ({ product }) => {
 				</Heading>
 				<div>
 					<Breadcrumbs product={ product } />
+					<ProductNavigation productId={product.id } />
 				</div>
 			</Layout>
 		</>
