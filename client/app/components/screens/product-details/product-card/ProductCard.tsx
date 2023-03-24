@@ -3,13 +3,14 @@ import ProductInformation from '@/screens/product-details/product-card/ProductIn
 import ProductImage from '@/screens/product-details/product-card/ProductImage';
 import ProductVariations from '@/screens/product-details/product-card/ProductVariations';
 import styles from './ProductCard.module.scss';
+import { IProductDetails } from '@/types/product.interface';
 
-const ProductCard: FC = () => {
+const ProductCard: FC<IProductDetails> = ({ product }) => {
 	return (
 		<div className={styles.card}>
-			<ProductInformation />
-			<ProductImage />
-			<ProductVariations />
+			<ProductInformation product={product} />
+			<ProductImage product={product }/>
+			<ProductVariations product={product} />
 		</div>
 	);
 };

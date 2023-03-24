@@ -24,19 +24,6 @@
     @apply relative;
   }
 
-  .variations {
-    @apply grid grid-cols-4 gap-2.5 mt-6 animate-opacity;
-
-    > button {
-      @apply border border-solid border-white transition-colors text-[0.6rem] font-semibold uppercase py-0.5
-      px-0.5 text-center bg-transparent text-white rounded;
-
-      &.active {
-        @apply text-dark-green bg-white
-      }
-    }
-  }
-
   .link {
     @apply text-sm text-center block mt-3 text-white;
 
@@ -58,6 +45,19 @@
 
     .heading {
       @apply text-white text-3xl;
+    }
+  }
+}
+
+.variations {
+  @apply grid grid-cols-4 gap-2.5 mt-6 animate-opacity;
+
+  > button {
+    @apply border border-solid border-white transition-colors text-[0.6rem] font-semibold uppercase py-0.5
+    px-0.5 text-center bg-transparent text-white rounded;
+
+    &.active {
+      @apply text-dark-green bg-white
     }
   }
 }

@@ -6,12 +6,12 @@ import { IProduct } from '@/types/product.interface';
 import { TypeSize } from '@/store/cart/cart.types';
 import { useCart } from '@/hooks/useCart';
 
-interface ICarouselButton {
+interface IAddToCartButton {
 	product: IProduct;
 	selectedSize: TypeSize;
 }
 
-export const CarouselBtn: FC<ICarouselButton> = ({ product, selectedSize }) => {
+export const AddToCartButton: FC<IAddToCartButton> = ({ product, selectedSize }) => {
 	const { addToCart, removeFromCart } = useActions();
 	const { cart } = useCart();
 
