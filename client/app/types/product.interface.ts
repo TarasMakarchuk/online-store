@@ -1,3 +1,5 @@
+import { IReview } from './reviews.interfase';
+
 export interface IProduct {
 	id: number;
 	name: string;
@@ -5,7 +7,7 @@ export interface IProduct {
 	description: string;
 	price: number;
 	//TODO add review interface
-	reviews: [];
+	reviews: IReview[];
 	images: string[];
 }
 

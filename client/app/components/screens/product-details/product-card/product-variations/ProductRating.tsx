@@ -1,16 +1,14 @@
 import { FC, useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
 import styles from '../ProductCard.module.scss';
+import { IProductDetails } from '@/types/product.interface';
 
-const ProductRating: FC = () => {
-	const [rating, setRating] = useState(0)
-
-	const handleRating = (rate: number) => {
-		setRating(rate)
-	}
-	const onPointerEnter = () => console.log('Enter')
-	const onPointerLeave = () => console.log('Leave')
-	const onPointerMove = (value: number, index: number) => console.log(value, index)
+const ProductRating: FC<IProductDetails> = ({ product }) => {
+	const averageRating = Math.round(
+		product.reviews.reduce((acc, review) =>
+			acc + review.rating, 0) / product.reviews.length
+	) || 0;
+	const [rating, setRating] = useState(averageRating);
 
 	return (
 		<div className={styles.rating}>
@@ -18,10 +16,7 @@ const ProductRating: FC = () => {
 				Review:
 			</span>
 			<Rating
-				onClick={handleRating}
-				onPointerEnter={onPointerEnter}
-				onPointerLeave={onPointerLeave}
-				onPointerMove={onPointerMove}
+				readonly
 				initialValue={rating}
 				SVGstyle={{
 					display: 'inline-block',

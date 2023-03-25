@@ -1,4 +1,5 @@
 import { IProduct } from "@/types/product.interface";
+import { reviews } from '@/data/reviews.data';
 
 export const products: IProduct[] = [
 	{
@@ -11,7 +12,7 @@ export const products: IProduct[] = [
 			'/images/products/capuccino.png',
 		],
 		price: 7.29,
-		reviews: [],
+		reviews: [reviews[0], reviews[1], reviews[2]],
 	},
 	{
 		id: 2,
@@ -66,6 +67,17 @@ export const products: IProduct[] = [
 			'/images/products/caramelle.png',
 		],
 		price: 2.99,
+		reviews: [],
+	},
+	{
+		id: 7,
+		description: 'Calories total Fat 12g milk 10%',
+		name: 'Capuccino',
+		slug: 'capuccino',
+		images: [
+			'/images/products/capuccino.png',
+		],
+		price: 2.79,
 		reviews: [],
 	},
 ];
