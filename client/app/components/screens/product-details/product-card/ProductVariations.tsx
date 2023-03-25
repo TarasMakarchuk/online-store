@@ -6,13 +6,12 @@ import { IProductDetails } from '@/types/product.interface';
 import styles from './ProductCard.module.scss';
 import { AddToCartButton } from '@/ui/catalog/button/AddToCartButton';
 
-
 const ProductVariations: FC<IProductDetails> = ({ product }) => {
 	const [selectedSize, setSelectedSize] = useState<TypeSize>('SHORT');
 
 	return (
 		<div className={styles.variations}>
-			<ProductRating />
+			<ProductRating product={product} />
 			<SizeVariations
 				selectedSize={selectedSize}
 				setSelectedSize={setSelectedSize}
