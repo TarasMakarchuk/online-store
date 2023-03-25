@@ -13,7 +13,7 @@ const ProductDetails: FC<IProductDetails> = ({ product }) => {
 				title={ product.name }
 				description={`${ product.description }`}
 			>
-				<Heading> { product.name } </Heading>
+				<Heading> Product details </Heading>
 				<div>
 					<Breadcrumbs product={ product } />
 					<ProductNavigation productId={product.id } />

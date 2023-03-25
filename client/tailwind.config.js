@@ -10,6 +10,7 @@ const constants = {
     'light-gray': '#E8E7E3',
     red: '#F23C3D',
     'beige': '#A49B8F',
+    'dark-beige': '#64605b',
 };
 
 module.exports = {
