@@ -7,8 +7,14 @@ import styles from './ProductCard.module.scss';
 const ProductImage: FC<IProductDetails> = ({ product }) => {
 	return (
 		<div className={styles.image}>
-			<Image src={product.images[0]} alt={product.name} width={250} height={250} />
-			<div>{ formatToCurrency(product.price) }</div>
+			<div className={styles.main}>
+				<Image
+					src={product.images[0]}
+					alt={product.name}
+					width={260} height={260}
+				/>
+			</div>
+			<div className={styles.price}>{ formatToCurrency(product.price) }</div>
 		</div>
 	);
 };

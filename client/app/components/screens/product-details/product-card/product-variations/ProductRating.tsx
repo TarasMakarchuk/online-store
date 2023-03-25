@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
+import styles from '../ProductCard.module.scss';
 
 const ProductRating: FC = () => {
 	const [rating, setRating] = useState(0)
@@ -12,12 +13,21 @@ const ProductRating: FC = () => {
 	const onPointerMove = (value: number, index: number) => console.log(value, index)
 
 	return (
-		<div className='App'>
+		<div className={styles.rating}>
+			<span>
+				Review:
+			</span>
 			<Rating
 				onClick={handleRating}
 				onPointerEnter={onPointerEnter}
 				onPointerLeave={onPointerLeave}
 				onPointerMove={onPointerMove}
+				initialValue={rating}
+				SVGstyle={{
+					display: 'inline-block',
+				}}
+				size={32}
+				allowFraction
 			/>
 		</div>
 	)
