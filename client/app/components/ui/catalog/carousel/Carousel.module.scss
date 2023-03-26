@@ -52,6 +52,12 @@
 .variations {
   @apply grid grid-cols-4 gap-2.5 mt-6 animate-opacity;
 
+  &.medium {
+    > button {
+      @apply text-[0.9rem];
+    }
+  }
+
   > button {
     @apply border border-solid border-white transition-colors text-[0.6rem] font-semibold uppercase py-0.5
     px-0.5 text-center bg-transparent text-white rounded;
