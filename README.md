@@ -12,6 +12,8 @@
 This is an Online Shop [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 ___
 
+### Design ideas https://dribbble.com
+
 ## Installation on the Client and the Server`☕`
 ```bash
 $ npm install

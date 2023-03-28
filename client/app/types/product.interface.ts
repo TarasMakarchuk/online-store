@@ -6,7 +6,6 @@ export interface IProduct {
 	slug: string;
 	description: string;
 	price: number;
-	//TODO add review interface
 	reviews: IReview[];
 	images: string[];
 }
