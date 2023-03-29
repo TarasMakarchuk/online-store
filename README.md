@@ -33,3 +33,17 @@ $ npm run start
 ```
 ___
 
+## Seed the DB`🚀`
+```bash
+
+# development mode
+$ npm run seed
+```
+___
+## Create and run migration in the DB`🚀`
+```bash
+
+# development mode
+$  npx prisma migrate dev --name init
+```
+___
