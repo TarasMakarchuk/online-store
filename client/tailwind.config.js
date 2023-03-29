@@ -10,6 +10,7 @@ const constants = {
     'light-gray': '#E8E7E3',
     red: '#F23C3D',
     'beige': '#A49B8F',
+    'dark-beige': '#64605b',
 };
 
 module.exports = {
@@ -39,6 +40,29 @@ module.exports = {
                 '8xl': '6.9rem',
                 '9xl': '9.2rem',
             },
+            keyframes: {
+                animationOpacity: {
+                    from: { opacity: 0.2 },
+                    to: { opacity: 1 },
+                },
+                scaleIn: {
+                    '0%': {
+                        opacity: 0,
+                        transform: 'scale(0.9)',
+                    },
+                    '50%': {
+                        opacity: 0.3,
+                    },
+                    '100%': {
+                        opacity: 1,
+                        transform: 'scale(1)',
+                    },
+                }
+            },
+            animation: {
+                opacity: 'animationOpacity .5s ease-in-out',
+                scaleIn: 'scaleIn .35s ease-in-out',
+            }
         },
     },
     plugins: [],

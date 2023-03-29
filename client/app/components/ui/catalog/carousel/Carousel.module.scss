@@ -16,24 +16,19 @@
     }
   }
 
-  .description {
-    @apply text-sm mt-5 text-beige opacity-90 leading-9;
+  .information {
+    @apply text-sm mt-5 text-beige opacity-90 leading-9 animate-opacity;
   }
 
   > div {
     @apply relative;
   }
 
-  .variations {
-    @apply grid grid-cols-4 gap-2.5 mt-6;
+  .link {
+    @apply text-sm text-center block mt-3 text-white;
 
-    > button {
-      @apply border border-solid border-white transition-colors text-[0.6rem] font-semibold uppercase py-0.5
-      px-0.5 text-center bg-transparent text-white rounded;
-
-      &.active {
-        @apply text-dark-green bg-white
-      }
+    &:hover {
+      color: lightgrey;
     }
   }
 
@@ -50,6 +45,25 @@
 
     .heading {
       @apply text-white text-3xl;
+    }
+  }
+}
+
+.variations {
+  @apply grid grid-cols-4 gap-2.5 mt-6 animate-opacity;
+
+  &.medium {
+    > button {
+      @apply text-[0.9rem];
+    }
+  }
+
+  > button {
+    @apply border border-solid border-white transition-colors text-[0.6rem] font-semibold uppercase py-0.5
+    px-0.5 text-center bg-transparent text-white rounded;
+
+    &.active {
+      @apply text-dark-green bg-white
     }
   }
 }

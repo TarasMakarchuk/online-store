@@ -1,3 +1,16 @@
 :global {
-  /* ... */
+  //@tailwind base;
+  //@tailwind components;
+  //@tailwind utilities;
+}
+
+body {
+  @apply text-base text-black;
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  opacity: 0.3 !important;
 }

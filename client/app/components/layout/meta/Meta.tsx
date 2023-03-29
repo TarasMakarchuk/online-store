@@ -34,7 +34,7 @@ const Meta: FC <PropsWithChildren<ISeo>> = ({
 					<meta property='og:title' content={titleMerge(title)} />
 					<meta property='og:url' content={currentUrl} />
 					<meta property='og:image' content={image} />
-					<meta property='og:site_name' content={siteName()} />
+					<meta property='og:site_name' content={siteName} />
 					<meta property='og:description'
 								content={onlyText(description, 197)} />
 				</>

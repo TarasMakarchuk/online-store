@@ -1,12 +1,13 @@
 import { FC, useState } from 'react';
-import { CarouselBtn } from '@/ui/catalog/carousel/carousel-item/CarouselBtn';
-import { CarouselVariations } from '@/ui/catalog/carousel/carousel-item/CarouselVariations';
+import { AddToCartButton } from '@/ui/catalog/button/AddToCartButton';
+import { SizeVariations } from '@/ui/catalog/carousel/carousel-item/SizeVariations';
 import { TypeSize } from '@/store/cart/cart.types';
 import { ICarouselItem } from '@/ui/catalog/carousel/carousel-item/carousel.interface';
 import { CarouselNavigation } from '@/ui/catalog/carousel/carousel-item/carousel-navigation/CarouselNavigation';
 import cn from 'clsx';
 import { useCarousel } from '@/ui/catalog/carousel/carousel-item/useCarouse';
 import { useActions } from '@/hooks/useActions';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import styles from '../Carousel.module.scss';
 
@@ -42,14 +43,15 @@ export const CarouselItem: FC<ICarouselItem> = ({ product, index }) => {
 
 				{isActive ?
 					<>
-						<CarouselVariations
+						<SizeVariations
 							selectedSize={selectedSize}
 							setSelectedSize={setSelectedSize}
 						/>
-						<CarouselBtn
+						<AddToCartButton
 							product={product}
 							selectedSize={selectedSize}
 						/>
+						<Link href={`/product/${product.slug}`} className={styles.link}>More information</Link>
 					</> :
 					<div className={styles.description}>
 						{product.description}
