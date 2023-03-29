@@ -6,7 +6,7 @@ import { PrismaService } from './prisma.service';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    ProductModule
+    ProductModule,
   ],
   controllers: [],
   providers: [PrismaService],
