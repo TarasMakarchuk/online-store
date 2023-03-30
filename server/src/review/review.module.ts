@@ -5,6 +5,6 @@ import { PrismaService } from '../prisma.service';
 
 @Module({
   controllers: [ReviewController],
-  providers: [ReviewService, PrismaService]
+  providers: [ReviewService, PrismaService],
 })
 export class ReviewModule {}

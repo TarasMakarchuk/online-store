@@ -3,10 +3,11 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { PrismaService } from '../prisma.service';
 import { Product } from '@prisma/client';
+import { ReviewService } from '../review/review.service';
 
 @Injectable()
 export class ProductService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService, private reviewService: ReviewService) {}
 
   async findAll(searchTerm?: string): Promise<Product[] | undefined> {
     return this.prisma.product.findMany(searchTerm ? {
@@ -27,10 +28,20 @@ export class ProductService {
     } : undefined);
   }
 
-  async findById(id: number): Promise<Product> {
-    const product = await this.prisma.product.findUnique({ where: { id } });
+  async findById(id: number): Promise<Product | number> {
+    const product = await this.prisma.product.findUnique({
+      where: {
+        id
+      },
+      include: {
+        reviews: true,
+      },
+    });
     if (!product) throw new NotFoundException(`Product with id: ${id} not found`);
-    return product;
+
+    const averageRating = await this.reviewService.getAverageReviewRatingByProductId(id);
+
+    return { ...product, ...averageRating };
   }
 
   async findBySlug(slug: string): Promise<Product> {

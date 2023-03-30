@@ -19,7 +19,7 @@ export class ProductController {
   }
 
   @Get(':id')
-  async findById(@Param('id') id: string): Promise<Product> {
+  async findById(@Param('id') id: string): Promise<Product | number> {
     return this.productService.findById(+id);
   }
 
