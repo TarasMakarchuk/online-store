@@ -9,23 +9,44 @@ import { ReviewService } from '../review/review.service';
 export class ProductService {
   constructor(private prisma: PrismaService, private reviewService: ReviewService) {}
 
-  async findAll(searchTerm?: string): Promise<Product[] | undefined> {
-    return this.prisma.product.findMany(searchTerm ? {
-      where: {
-        OR: [
-          {
-            name: {
-              contains: searchTerm,
+  async findAll(
+    searchTerm?: string,
+    sortingField?: string,
+    sortingDirection?: string,
+    take?: number,
+    skip?: number,
+  ): Promise<Product[]> {
+    const DEFAULT_TAKE = 100;
+    const DEFAULT_SKIP = 0;
+    if(!take || !skip) {
+      take = DEFAULT_TAKE;
+      skip = DEFAULT_SKIP;
+    }
+    if (searchTerm) {
+      return this.prisma.product.findMany({
+        where: {
+          OR: [
+            {
+              name: {
+                contains: searchTerm
+              }
             },
-          },
-          {
-            description: {
-              contains: searchTerm,
-            },
-          },
-        ],
-      }
-    } : undefined);
+            {
+              description: {
+                contains: searchTerm
+              }
+            }
+          ]
+        }
+      });
+    }
+    return this.prisma.product.findMany({
+      skip,
+      take,
+      orderBy: {
+        [sortingField]: sortingDirection,
+      },
+    });
   }
 
   async findById(id: number): Promise<Product | number> {
