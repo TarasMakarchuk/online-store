@@ -22,6 +22,13 @@ export class ReviewService {
 		return review;
 	}
 
+	async getAverageReviewRatingByProductId(productId: number): Promise<{ rating: number}> {
+		return this.prisma.review.aggregate({
+			where: { productId },
+			_avg: { rating: true }
+		}).then(data => data._avg);
+	}
+
 	async create(createReviewDto: CreateReviewDto): Promise<Review> {
 		const { productId } = createReviewDto;
 		const product = await this.prisma.product.findUnique({ where: { id: productId } });
