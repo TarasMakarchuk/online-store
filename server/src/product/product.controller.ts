@@ -14,8 +14,14 @@ export class ProductController {
   }
 
   @Get()
-  async findAll(@Query('searchTerm') searchTerm?: string): Promise<Product[] | undefined> {
-    return this.productService.findAll(searchTerm);
+  async findAll(
+    @Query('searchTerm') searchTerm?: string,
+    @Query('sortingField') sortingField?: string,
+    @Query('sortingDirection') sortingDirection?: string,
+    @Query('take') take?: string,
+    @Query('skip') skip?: string,
+  ): Promise<Product[]> {
+    return this.productService.findAll(searchTerm, sortingField, sortingDirection, +take, +skip);
   }
 
   @Get(':id')
