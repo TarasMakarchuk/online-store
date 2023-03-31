@@ -1,11 +1,10 @@
 import { FC } from 'react';
 import Layout from '@/layout/Layout';
 import { Catalog } from '@/ui/catalog/Catalog';
-import { products } from '@/data/product.data';
 import { Heading } from '@/ui/hading/Heading';
+import { IProductsPage } from '../../../../pages';
 
-const Home: FC = () => {
-	//TODO SSR need
+const Home: FC<IProductsPage> = ({ products }) => {
 	return (
 		<>
 			<Layout

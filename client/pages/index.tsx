@@ -1,9 +1,24 @@
 import Home from '@/screens/home/Home';
-import { NextPage } from 'next';
+import { IProduct } from '@/types/product.interface';
+import { GetStaticProps, NextPage } from 'next';
+import { ProductService } from '../services/product-service';
 
-const HomePage: NextPage = () => {
-	return <Home />;
+export interface IProductsPage {
+	products: IProduct[];
+}
+
+const HomePage: NextPage<IProductsPage> = ({ products }) => {
+	return <Home products={products}/>;
 };
 
+export const getStaticProps: GetStaticProps<IProductsPage> = async () => {
+	const { data } = await ProductService.getProducts();
+
+	return {
+		props: {
+			products: data,
+		},
+	};
+};
 
 export default HomePage;
