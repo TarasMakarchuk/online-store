@@ -3,6 +3,7 @@ import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from '@prisma/client';
+import { sortType } from './types/sort-type';
 
 @Controller('products')
 export class ProductController {
@@ -15,13 +16,18 @@ export class ProductController {
 
   @Get()
   async findAll(
-    @Query('searchTerm') searchTerm?: string,
-    @Query('sortingField') sortingField?: string,
-    @Query('sortingDirection') sortingDirection?: string,
+    @Query('sortType') type?: sortType,
     @Query('take') take?: string,
     @Query('skip') skip?: string,
   ): Promise<Product[]> {
-    return this.productService.findAll(searchTerm, sortingField, sortingDirection, +take, +skip);
+    return this.productService.findAll(type, +take, +skip);
+  }
+
+  @Get('search')
+  async findBySearchTerm(
+    @Query('searchTerm') searchTerm?: string,
+  ): Promise<Product[]> {
+    return this.productService.findBySearchTerm(searchTerm);
   }
 
   @Get(':id')
