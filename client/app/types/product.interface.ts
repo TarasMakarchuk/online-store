@@ -13,3 +13,5 @@ export interface IProduct {
 export interface IProductDetails {
 	product: IProduct;
 }
+
+export type sortType = 'newest' | 'oldest'| 'low-to-high' | 'high-to-low';
