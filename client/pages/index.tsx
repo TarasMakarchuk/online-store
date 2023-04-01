@@ -12,11 +12,11 @@ const HomePage: NextPage<IProductsPage> = ({ products }) => {
 };
 
 export const getStaticProps: GetStaticProps<IProductsPage> = async () => {
-	const { data } = await ProductService.getProducts();
+	const products = await ProductService.getProducts();
 
 	return {
 		props: {
-			products: data,
+			products,
 		},
 	};
 };

@@ -1,15 +1,18 @@
 import { axiosClassic } from '../api/api';
-import { IProduct, sortType } from '@/types/product.interface';
+import { IProduct } from '@/types/product.interface';
+import { EnumSorting } from '@/ui/catalog/sorting/sorting.interface';
 
 const PRODUCTS = '/products';
 
 export const ProductService = {
-	async getProducts(type?: sortType) {
-		return axiosClassic.get<IProduct[]>(PRODUCTS, {
+	async getProducts(type?: EnumSorting) {
+		const { data } = await axiosClassic.get<IProduct[]>(PRODUCTS, {
 			params: {
 				sortType: type,
 			},
 		});
+
+		return data;
 	},
 
 	async bySearchTerm(searchTerm: string) {
