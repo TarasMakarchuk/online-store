@@ -19,7 +19,6 @@ ___
 $ npm install
 ```
 ___
-
 ______
 
 ## Running the app on the Client`🚀`
