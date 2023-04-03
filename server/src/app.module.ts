@@ -5,6 +5,7 @@ import { PrismaService } from './prisma.service';
 import { ReviewModule } from './review/review.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { path } from 'app-root-path';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { path } from 'app-root-path';
     }),
     ProductModule,
     ReviewModule,
+    PaymentModule,
   ],
   controllers: [],
   providers: [PrismaService],
