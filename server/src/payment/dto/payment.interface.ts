@@ -1,8 +1,19 @@
-interface PaymentItem {
-	name: string
-	price: number;
-	quantity: number;
+interface Product {
+	id: number;
+	name: string;
 	description?: string;
+	images: [string];
+	price: number;
+	createdAt: string;
+	updatedAt: string;
+	slug: string;
 }
 
-export type Cart = PaymentItem[];
+interface ProductItem {
+	id: number;
+	product: Product;
+	quantity: number;
+	size: string;
+}
+
+export type Cart = ProductItem[];
