@@ -1,0 +1,12 @@
+.payment {
+  @apply text-xl;
+
+  .pay-button {
+    @apply w-[180px] h-10 bg-green text-xl text-white;
+    border-radius: 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
