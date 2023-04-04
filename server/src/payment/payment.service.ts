@@ -14,10 +14,10 @@ export class PaymentService {
 	async createPayment(cart: Cart): Promise<any> {
 		try {
 			const totalPrice = cart.reduce(
-				(acc, item) => acc + item.price * item.quantity, 0
+				(acc, item) => acc + item.product.price * item.quantity, 0
 			);
 			return this.stripe.paymentIntents.create({
-				amount: totalPrice * 100,
+				amount: +totalPrice.toFixed(2) * 100,
 				currency: 'usd',
 				payment_method_types: ['card'],
 			});
