@@ -72,7 +72,12 @@ const Cart: FC = () => {
 								<div>Total:</div>
 								<div>{ formatToCurrency(total) }</div>
 							</div>
-							<Button colorScheme='whatsapp'>Checkout</Button>
+							<Button
+								colorScheme='whatsapp'
+								hidden={total === 0}
+							>
+								Checkout
+							</Button>
 						</DrawerFooter>
 					</DrawerContent>
 

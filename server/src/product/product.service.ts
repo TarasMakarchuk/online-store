@@ -3,34 +3,74 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { PrismaService } from '../prisma.service';
 import { Product } from '@prisma/client';
+import { ReviewService } from '../review/review.service';
+import { sortType } from './types/sort-type';
 
 @Injectable()
 export class ProductService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService, private reviewService: ReviewService) {}
 
-  async findAll(searchTerm?: string): Promise<Product[] | undefined> {
-    return this.prisma.product.findMany(searchTerm ? {
+  async findAll(
+    type?: sortType,
+    take?: number,
+    skip?: number,
+  ): Promise<Product[]> {
+    const DEFAULT_TAKE = 100;
+    const DEFAULT_SKIP = 0;
+
+    if(!take || !skip) {
+      take = DEFAULT_TAKE;
+      skip = DEFAULT_SKIP;
+    }
+
+    const isSortByPrice = type === 'high-to-low' || type === 'low-to-high';
+    const isAsc = type === 'oldest' || type === 'low-to-high';
+    const orderBy = {
+      [isSortByPrice ? 'price' : 'createdAt']: isAsc ? 'asc' : 'desc',
+    };
+
+    return this.prisma.product.findMany({
+      skip,
+      take,
+      orderBy,
+    });
+  }
+
+  async findBySearchTerm(searchTerm?: string): Promise<Product[]> {
+    return this.prisma.product.findMany({
       where: {
         OR: [
           {
             name: {
               contains: searchTerm,
-            },
+              mode: 'insensitive'
+            }
           },
           {
             description: {
               contains: searchTerm,
-            },
-          },
-        ],
+              mode: 'insensitive'
+            }
+          }
+        ]
       }
-    } : undefined);
+    });
   }
 
-  async findById(id: number): Promise<Product> {
-    const product = await this.prisma.product.findUnique({ where: { id } });
+  async findById(id: number): Promise<Product | number> {
+    const product = await this.prisma.product.findUnique({
+      where: {
+        id
+      },
+      include: {
+        reviews: true,
+      },
+    });
     if (!product) throw new NotFoundException(`Product with id: ${id} not found`);
-    return product;
+
+    const averageRating = await this.reviewService.getAverageReviewRatingByProductId(id);
+
+    return { ...product, ...averageRating };
   }
 
   async findBySlug(slug: string): Promise<Product> {
