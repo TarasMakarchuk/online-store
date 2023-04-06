@@ -1,12 +1,29 @@
 .payment {
-  @apply text-xl;
+  @apply text-xl w-[100%] h-[200px] block mb-12 rounded-xl;
+  background-color: lightgrey;
 
-  .pay-button {
-    @apply w-[180px] h-10 bg-green text-xl text-white;
-    border-radius: 5px;
+  .wrapper {
+    @apply pt-4;
 
-    &:hover {
-      cursor: pointer;
+    .card {
+      @apply mt-5 border border-solid border-green p-6 rounded-lg;
+    }
+
+    .label {
+      @apply text-xl p-6;
+    }
+
+    .pay-button {
+      @apply w-[180px] h-10 bg-green text-xl text-white mt-6 border border-solid border-black;
+      border-radius: 5px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .payment-status {
+      @apply mt-6 w-[250px];
     }
   }
 }

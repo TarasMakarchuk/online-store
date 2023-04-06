@@ -8,6 +8,16 @@ const nextConfig = {
   env: {
     REACT_APP_SERVER_URL: process.env.REACT_APP_SERVER_URL,
   },
+  async headers() {
+    return [
+      {
+        source: "/_next/:path*",
+        headers: [
+          { key: "Access-Control-Allow-Origin", value: "http://localhost:3000" },
+        ],
+      },
+    ]
+  },
   async rewrites() {
     return [
       {
