@@ -5,6 +5,7 @@ import { Elements, CardElement, useStripe, useElements } from '@stripe/react-str
 import { useActions } from '@/hooks/useActions';
 import { useCart } from '@/hooks/useCart';
 import styles from './Payment.module.scss';
+import { Spinner } from '@chakra-ui/react';
 
 const PUBLIC_KEY = 'pk_test_51MsoWpBflU0dm2pRAl95WtqpstmwqksyZW4LZJ4O2UyM1ZTv2pMrUBkvW8D7L8LEwVA9UXt0r3vzSbUx6v55BU8P00kVUhUcTg'
 
@@ -17,18 +18,13 @@ const Payment: FC = () => {
 	const stripe = useStripe();
 	const elements = useElements();
 
-	const success = paymentStatus === 'succeeded';
+	const isSuccess = paymentStatus === 'succeeded';
 
 	useEffect(() => {
 		if (total === 0) return;
-		if (!success) return;
-
-		if (success) {
-			setPaymentStatus('');
-			resetCart();
-		}
-
-	}, [success]);
+		if (!isSuccess) return;
+		resetCart();
+	}, [isSuccess]);
 
 	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -71,21 +67,39 @@ const Payment: FC = () => {
 			  onSubmit={handleSubmit}
 				id='payment-form'
 			>
-				<label htmlFor='card-element'>Place order</label>
-				<CardElement id='card-element' />
+				<div className={styles.wrapper}>
+				<label htmlFor='card-element' className={styles.label}>Order payment</label>
+				<CardElement id='card-element' data-gramm="false" className={styles.card}/>
 				{
-					!isProcessing && (
+					!isProcessing ?
+						(
 						<button
 							className={styles['pay-button']}
 							disabled={total === 0}
 							style={total === 0 ? {backgroundColor: 'lightGray'} : {backgroundColor: 'green'}}
 						>
-							Pay
+							{ isSuccess ? 'Done' : 'Pay' }
 						</button>
-					)
+					) :
+						(
+							<button
+								className={styles['pay-button']}
+								disabled
+								style={{backgroundColor: 'lightGray', paddingTop: '2px'}}
+							>
+								<Spinner />
+							</button>
+						)
 				}
-				{ isProcessing && <div> Processing... </div> }
-				{ !isProcessing && paymentStatus && <div> Status: { paymentStatus } </div> }
+				{ isProcessing && <div> Processing... </div>}
+				{!isProcessing && paymentStatus &&
+					<div className={styles['payment-status']}>
+						Payment was <span style={ isSuccess ? {  color: 'green' } : { color: 'red' }}>
+							{ isSuccess ? 'success' : paymentStatus }
+						</span>
+					</div>
+				}
+				</div>
 			</form>
 		</div>
 	);
