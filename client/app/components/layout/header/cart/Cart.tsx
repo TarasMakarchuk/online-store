@@ -13,15 +13,21 @@ import {
 import { Button } from '@chakra-ui/react';
 import { formatToCurrency } from '@/utils/format-to-currency';
 import { useCart } from '@/hooks/useCart';
+import { ModalWindow } from '@/layout/modal/ModalWindow';
 
 const Cart: FC = () => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState<boolean>(false);
+	const [isShowModal, setIsShowModal] = useState<boolean>(false);
 	const btnRef = useRef<HTMLButtonElement>(null)
 
 	const { cart, total } = useCart();
 
 	const handleClick = (): void => {
 		setIsOpen(!isOpen);
+	};
+
+	const showModalWindow = () => {
+		setIsShowModal(!isShowModal);
 	};
 
 	return (
@@ -72,12 +78,15 @@ const Cart: FC = () => {
 								<div>Total:</div>
 								<div>{ formatToCurrency(total) }</div>
 							</div>
+
 							<Button
+								onClick={showModalWindow}
 								colorScheme='whatsapp'
 								hidden={total === 0}
 							>
 								Checkout
 							</Button>
+							{ isShowModal && <ModalWindow isOpen={isShowModal} onClose={showModalWindow} title={ 'Payment' }/> }
 						</DrawerFooter>
 					</DrawerContent>
 

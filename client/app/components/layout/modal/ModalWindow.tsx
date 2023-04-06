@@ -1,55 +1,44 @@
 import {
-	Button, HStack, Input, Modal,
+	Button, HStack, Modal,
 	ModalBody,
 	ModalCloseButton,
 	ModalContent, ModalFooter,
 	ModalHeader,
-	ModalOverlay, useNumberInput
+	ModalOverlay,
 } from '@chakra-ui/react';
 import { FC } from 'react';
+import PaymentGateway from '@/layout/header/cart/payment/Payment';
+import styles from './ModalWindow.module.scss';
 
 type Props = {
 	isOpen: boolean;
 	onClose: () => void;
-	onSubmit: (event: any) => any;
+	onSubmit?: (event: any) => any;
+	title: string;
 }
 
-export const ModalWindow: FC<Props> = ({isOpen, onClose, onSubmit}) => {
-	const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
-		useNumberInput({
-			step: 1,
-			defaultValue: 2,
-			min: 1,
-			max: 30,
-			precision: 0,
-		})
-
-	const inc = getIncrementButtonProps()
-	const dec = getDecrementButtonProps()
-	const input = getInputProps()
-
+export const ModalWindow: FC<Props> = ({isOpen, onClose, onSubmit, title}) => {
 	return (
 		<>
 			<Modal isOpen={isOpen} onClose={onClose}>
 				<ModalOverlay />
-				<ModalContent>
-					<ModalHeader>Order list</ModalHeader>
+				<ModalContent maxW='600px' maxH='400'>
+					<ModalHeader fontSize='28px' textAlign='center' color='gray'>{ title }</ModalHeader>
+
 					<ModalCloseButton />
-					<ModalBody>
-							<span>Coffee, quantity</span>
-							<HStack maxW='200px'>
-								<Button {...dec}>-</Button>
-								<Input {...input} />
-								<Button {...inc}>+</Button>
+
+					<ModalBody >
+							<HStack maxW='400px' margin='0 auto'>
+								<PaymentGateway />
 							</HStack>
 					</ModalBody>
 
 					<ModalFooter>
-						<Button colorScheme='green' mr={10} onClick={onSubmit}>Confirm order</Button>
-						<Button colorScheme='red' onClick={onClose}>
+						<Button colorScheme='red' onClick={onClose} className={styles.closeBtn}>
 							Close
 						</Button>
 					</ModalFooter>
+
 				</ModalContent>
 			</Modal>
 		</>
