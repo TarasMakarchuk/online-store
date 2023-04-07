@@ -94,8 +94,8 @@ const Payment: FC = () => {
 				{ isProcessing && <div> Processing... </div>}
 				{!isProcessing && paymentStatus &&
 					<div className={styles['payment-status']}>
-						Payment was <span style={ isSuccess ? {  color: 'green' } : { color: 'red' }}>
-							{ isSuccess ? 'success' : paymentStatus }
+						Payment <span style={ isSuccess ? {  color: 'green' } : { color: 'red' }}>
+							{ isSuccess ? 'successful' : paymentStatus }
 						</span>
 					</div>
 				}

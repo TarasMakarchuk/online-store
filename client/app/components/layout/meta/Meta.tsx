@@ -1,9 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { FC, PropsWithChildren } from 'react';
-
 import { onlyText } from '@/utils/clear-text';
-
 import { siteName, titleMerge } from './meta.config';
 import { ISeo } from './meta.interface';
 
@@ -15,7 +13,7 @@ const Meta: FC <PropsWithChildren<ISeo>> = ({
 	type = 'website',
 }) => {
 	const { asPath } = useRouter();
-	const currentUrl = `${process.env.APP_URL}${asPath}`;
+	const currentUrl = `${process.env.REACT_APP_SERVER_URL}${asPath}`;
 
 	return (
 		<>
