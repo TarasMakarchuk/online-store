@@ -73,4 +73,3 @@ ___
 $  npx prisma migrate dev --name init
 ```
 ___
-
